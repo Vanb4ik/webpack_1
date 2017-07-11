@@ -1,0 +1,36 @@
+.images1_content,
+.images2_content,
+.text_content,
+.not_completed {
+  display: inline-block;
+  padding: 10px 10px;
+}
+.not_completed:hover,
+.icon_align:hover,
+.onDeleteStyles:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.align{
+  text-decoration:line-through;
+  color: darkgrey;
+  margin:11px 0;
+}
+.not_completed{
+  border: 1px solid darkgrey;
+  border-radius: 5px ;
+}
+
+.icon_align {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: forestgreen;
+}
+.text_content{
+  width: 500px;
+  overflow: auto;
+}
+.images2_content {
+  float: right;
+  color: darkgrey;
+}

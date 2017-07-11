@@ -1,11 +1,12 @@
 import React from "react";
-import { Child } from "./Child";
-import { Child2 } from "./Child2";
+import TodoListApp  from "./TodoListApp";
+
+import styles from "./Root.scss";
 
 const Root = () => (
-    <div>
-        <Child />
-        <Child2 />
+    //contst Root = functions(){return <div>....  }
+    <div className={styles.main_class}>
+        <TodoListApp />
     </div>
 
 );

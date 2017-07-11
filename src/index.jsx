@@ -1,16 +1,18 @@
-
-
 import React from "react";
 import ReactDOM from "react-dom";
+
+
 import { AppContainer } from 'react-hot-loader';
 import RootRouter from "./components/Root";
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./Index.scss";
 
 const mountPoint = document.getElementById("root");
 
 const render = (Comp) =>
 	ReactDOM.render(
 		<AppContainer>
-			<Comp/>
+			<Comp />
 		</AppContainer>,
 		mountPoint
 	);

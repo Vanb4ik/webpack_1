@@ -1,56 +1,65 @@
-
-
 const webpack = require("webpack");
 const path = require("path");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: [
-		"babel-polyfill",
-		"react-hot-loader/patch",
-		"./src/index.jsx"
-	],
-	output: {
-		filename: "assets/js/bundle.min.js",
-		publicPath: "/",
-		path: path.join(__dirname, "/public/")
-	},
+    entry: [
+        "babel-polyfill",
+        "react-hot-loader/patch",
+        "./src/index.jsx"
+    ],
+    output: {
+        filename: "assets/js/bundle.min.js",
+        publicPath: "/",
+        path: path.join(__dirname, "/public/")
+    },
 
-	devtool: "source-map",
+    devtool: "source-map",
 
-	devServer: {
-		hot: true,
-		//inline: true,
-		stats: {
-			progress: true,
-			colors: true
-		},
-		port: 8080,
-		historyApiFallback: {
-			index:'index.html'
-		},
-		contentBase: path.join(__dirname, "public"),
-		host: "localhost"
-	},
+    devServer: {
+        hot: true,
+        //inline: true,
+        stats: {
+            progress: true,
+            colors: true
+        },
+        port: 8080,
+        historyApiFallback: {
+            index: 'index.html'
+        },
+        contentBase: path.join(__dirname, "public"),
+        host: "localhost"
+    },
 
-	resolve: {
-		extensions: [".js", ".jsx", ".json", ".scss"],
-		modules: ["src", "node_modules"],
-	},
+    resolve: {
+        extensions: [".js", ".jsx", ".json", ".scss"],
+        modules: ["src", "node_modules"],
+    },
 
-	module: {
-		rules: [
-			{
-				test: /\.jsx?$/,
-				loaders: ["react-hot-loader/webpack", "babel-loader"],
-				include: path.resolve("src")
-			},
+    module: {
+        rules: [
+            {
+                test: /\.(ttf|woff\.woff2\.eot)$/,
+                loaders: ["file-loader"]
+            },
+            {
+                test: /\.jsx?$/,
+                loaders: ["react-hot-loader/webpack", "babel-loader"],
+                include: path.resolve("src")
+            },
             {
                 test: /\.scss$/,
                 use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader?modules=true&sourceMap=true', 'sass-loader'],
                 }))
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?modules=false&sourceMap=false'],
+                })
             },
             {
                 test: /\.(png|jpe?g|svg|gif)$/,
@@ -63,21 +72,21 @@ module.exports = {
                     },
                 },
             },
-			{
-				test: /\.(png|jpe?g|svg|gif)$/,
+            {
+                test: /\.(png|jpe?g|svg|gif)$/,
 
-				use: {
-					loader: 'url-loader',
-					options: {
-						limit: 15000,
-						name: '[name].[hash].[ext]',
-					},
-				},
-			}
-		]
-	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 15000,
+                        name: '[name].[hash].[ext]',
+                    },
+                },
+            }
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin("assets/css/bundle.min.css")
-	]
+    ]
 };
