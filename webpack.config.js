@@ -39,7 +39,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(ttf|woff\.woff2\.eot)$/,
+                test: /\.(ttf|woff|woff2|eot)$/,
                 loaders: ["file-loader"]
             },
             {
