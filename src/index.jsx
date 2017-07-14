@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-
 import { AppContainer } from 'react-hot-loader';
+
 import RootRouter from "./components/Root";
+import "jquery";
 import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap";
 import "./Index.scss";
 
 const mountPoint = document.getElementById("root");
