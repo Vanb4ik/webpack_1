@@ -1,26 +1,19 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Route,
-    Link
-} from 'react-router-dom';
-
-
-
-import mass from "../mass.json";
 import {AutorPrevey} from "./AutorPrevey";
+import mass from "../mass.json";
 
-
-export const InboxPage = React.createClass
-({
+export const InboxPage = React.createClass({
     getInitialState(){
         return{
             mass
         };
     },
-    sowFullContent(id){
-        console.log(`/inbox/messages/${id}`);
-        this.props.history.push(`/inbox/messages/${id}`);
+
+    sowFullContent(massages){
+        const {mass}=this.state;
+        console.log(`/inbox/messages/${massages.id}`);
+        this.props.history.push(`/inbox/messages/${massages.id}`);
+
     },
     render:function () {
         const {mass}=this.state;
@@ -29,7 +22,7 @@ export const InboxPage = React.createClass
                 {
                     mass.map(massages=>
                         <AutorPrevey
-                            onClick={this.sowFullContent.bind(null,massages.id)}
+                            onClick={this.sowFullContent.bind(null,massages)}
                             key = {massages.id}
                             id={massages.id}
                             shortInfo = {massages.shortInfo}
@@ -38,9 +31,6 @@ export const InboxPage = React.createClass
                     )
 
                 }
-
-
-
             </div>
         )
     }
