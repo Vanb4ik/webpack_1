@@ -6,7 +6,7 @@ import {
     Link
 } from 'react-router-dom';
 
-export const AboutPage = React.createClass({
+export class AboutPage extends React.Component{
 
    render () {
        fetch('http://localhost:8081/api/users/1/10')
@@ -22,7 +22,7 @@ export const AboutPage = React.createClass({
        console.log(this.state);
        return(
            <div>
-              <h2>This is messages application</h2>
+              <h2>This is messages application!!</h2>
                <p>Lorem ipsum dolor sit amet.</p>
                <p>Lorem ipsum dolor sit amet.</p>
                <p>Lorem ipsum dolor sit amet.</p>
@@ -30,4 +30,4 @@ export const AboutPage = React.createClass({
 
        )
    }
-});
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AutorPrevey = React.createClass({
+export class AutorPrevey extends React.Component{
 
     render() {
         const {shortInfo,fullName,fullInfo,onClick} = this.props;
@@ -19,4 +19,4 @@ export const AutorPrevey = React.createClass({
 
         )
     }
-});
+}

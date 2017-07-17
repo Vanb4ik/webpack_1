@@ -20,31 +20,21 @@ const RouteConfigExample = React.createClass ({
             mass
         };
     },
-
     render() {
-
         return (
             <Router>
                 <div>
                     <Header/>
-                    <App path="/">
-
+                    <div className="container">
+                        <Route exact path="/" component={App}/>
                         <Route path="/about"  component={AboutPage} mass={this.state.mass}/>
-                        <Route>
-                            <Switch>
-                                <Route exact path="/inbox" component={InboxPage}/>
-
-                                <Route exact path="/inbox/messages/:id" component={Message}/>
-                            </Switch>
-                        </Route>
-                    </App>
+                        <Route exact path="/inbox" component={InboxPage}/>
+                        <Route exact path="/inbox/messages/:id" component={Message}/>
+                    </div>
                 </div>
             </Router>
         )
-
     }
-
-
 });
 
 
